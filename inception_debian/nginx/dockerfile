@@ -1,8 +1,8 @@
 FROM    debian:bullseye
 
-RUN     apt update && apt install nginx -y && apt install vim -y && apt install curl -y && mkdir -p /etc/nginx/ssl && apt install -y openssl
+RUN     apt update && apt install nginx -y && apt install curl -y && mkdir -p /etc/nginx/ssl && apt install -y openssl
 
-RUN     openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=login.42.fr/UID=login" 
+RUN     openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=vlaggoun.42.fr/UID=vlaggoun" 
 
 RUN     mkdir -p /var/run/nginx
 

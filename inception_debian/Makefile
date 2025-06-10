@@ -1,8 +1,8 @@
 COMPOSE_FILE=dockercompose.yml
-VOLUMES_DIR=~/data/wordpress ~/data/mariadb ~data/nginx
+VOLUMES_DIR=/home/vlaggoun/data/wordpress /home/vlaggoun/data/database
 
 all:
-	mkdir -p $(VOLUMES_DIR)
+	sudo mkdir -p $(VOLUMES_DIR)
 	docker compose -f $(COMPOSE_FILE) up -d --build
 
 down:
