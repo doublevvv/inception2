@@ -29,21 +29,19 @@ services:
         - "9000"
 
   nginx:
-    container_name: nginx
-    volumes:
-      - wordpress:/var/www/html
-    networks:
-      - inception
-    depends_on:
-      - wordpress
-    build:
-      context: nginx
-    env_file: .env
-    ports:
-      - "443:443"
-    restart: on-failure
-
-    
+      container_name: nginx
+      volumes:
+        - wordpress:/var/www/html
+      networks:
+        - inception
+      depends_on:
+        - wordpress
+      build:
+        context: nginx
+      env_file: .env
+      ports:
+        - "443:443"
+      restart: on-failure
 
 volumes:
   wordpress:
@@ -60,6 +58,7 @@ volumes:
         type: none
         o: bind
         device: "/home/vlaggoun/data/database"
+
 
 networks:
   inception:
