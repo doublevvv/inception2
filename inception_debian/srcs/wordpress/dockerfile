@@ -1,0 +1,17 @@
+FROM    debian:bullseye
+
+RUN     apt update -y && apt upgrade -y
+
+RUN     apt install -y wget php php7.4-fpm php-mysql mariadb-client
+
+RUN     wget https://fr.wordpress.org/wordpress-6.8-fr_FR.tar.gz -P /var/www/wordpress
+
+RUN		chown -R root:root /var/www/wordpress
+
+COPY    entrypoint.sh /usr/local/bin/entrypoint.sh
+
+COPY    wp.cnf /etc/php/7.4/fpm/pool.d/www.conf 
+
+RUN     chmod +x /usr/local/bin/entrypoint.sh
+
+ENTRYPOINT  ["sh", "/usr/local/bin/entrypoint.sh"]
